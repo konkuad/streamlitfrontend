@@ -77,11 +77,11 @@ def get_presets():
         },
         4:{
             'id':31,
-            'alpha':100
+            'alpha':50
         },
         5:{
             'id':31,
-            'alpha':100
+            'alpha':50
         }
     }
 
