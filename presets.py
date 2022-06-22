@@ -6,15 +6,15 @@ def get_presets():
 
     presets['lavender'] = {
         0:{
-            'id':random.randint(0,512),
+            'id':2,
             'alpha':100
         },
         1:{
-            'id':random.randint(0,512),
+            'id':2,
             'alpha':100
         },
         2:{
-            'id':random.randint(0,512),
+            'id':2,
             'alpha':100
         },
         3:{
@@ -33,15 +33,15 @@ def get_presets():
 
     presets['sunset'] = {
         0:{
-            'id':random.randint(0,512),
+            'id':2,
             'alpha':100
         },
         1:{
-            'id':random.randint(0,512),
+            'id':2,
             'alpha':100
         },
         2:{
-            'id':random.randint(0,512),
+            'id':2,
             'alpha':100
         },
         3:{
@@ -60,15 +60,15 @@ def get_presets():
 
     presets['golden'] = {
         0:{
-            'id':random.randint(0,512),
+            'id':2,
             'alpha':100
         },
         1:{
-            'id':random.randint(0,512),
+            'id':2,
             'alpha':100
         },
         2:{
-            'id':random.randint(0,512),
+            'id':2,
             'alpha':100
         },
         3:{
@@ -87,15 +87,15 @@ def get_presets():
 
     presets['dark'] = {
         0:{
-            'id':random.randint(0,512),
+            'id':2,
             'alpha':100
         },
         1:{
-            'id':random.randint(0,512),
+            'id':2,
             'alpha':100
         },
         2:{
-            'id':random.randint(0,512),
+            'id':2,
             'alpha':100
         },
         3:{
