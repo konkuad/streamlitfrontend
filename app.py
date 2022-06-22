@@ -3,6 +3,7 @@ import json
 import random
 import requests
 import base64
+import presets
 
 st.title("Anime Girl Profile Generator & Customizer")
 generate_form = st.form(key='generate')
@@ -34,29 +35,36 @@ with st.sidebar:
     
     st.write('## Set up some parameters')
     
-    sample_size = st.slider(f'Sample Size', 1, 11, 3)
-    random_ID = st.checkbox('Random ID')
-    random_alpha = st.checkbox('Random Alpha')
+    sample_size = st.slider(f'Sample Size', 1, 11, 3)   
+    option = st.selectbox('Use presets',['none', 'lavender', 'sunset', 'golden', 'dark'])
     
-    st.write('## Tweak the features!')
-    
-    for i, name in enumerate(names):
-        cfg[i] = st.checkbox(f'Modulate {name}')
-        
-        if cfg[i]:
-            ID = st.number_input(f'ID for layer - {name}', 0, 511, 0)
-            ALPHA = st.slider(f'Alpha for layer - {name}', -100, 100, 0)    
-            modulation_json[i] = {
-                'id':ID,
-                'alpha':ALPHA
-            }
-        else:
-            modulation_json[i] = {
-                'id':512,
-                'alpha':0
-            }
+    if option == 'none':
+        random_ID = st.checkbox('Random ID')
+        random_alpha = st.checkbox('Random Alpha')
+        st.write('## Tweak the features!')
 
-url = 'http://384f-104-199-156-93.ngrok.io'#st.text_input("Post to API")
+        for i, name in enumerate(names):
+            cfg[i] = st.checkbox(f'Modulate {name}')
+
+            if cfg[i]:
+                ID = st.number_input(f'ID for layer - {name}', 0, 511, 0)
+                ALPHA = st.slider(f'Alpha for layer - {name}', -100, 100, 0)    
+                modulation_json[i] = {
+                    'id':ID,
+                    'alpha':ALPHA
+                }
+            else:
+                modulation_json[i] = {
+                    'id':512,
+                    'alpha':0
+                }
+                
+    else:
+        random_ID = False
+        random_alpha = False
+        modulation_json = presets.get_presets()[option]
+
+url = 'http://aeff-34-105-19-204.ngrok.io'
 if generate:
     
     send_json = {}
