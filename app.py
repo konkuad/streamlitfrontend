@@ -75,7 +75,7 @@ if generate:
     
     get = requests.get(url)
     base64_encoded = str.encode(get.text)
-    base64_decoded = base64.decodestring(base64_encoded) 
+    base64_decoded = base64.decodebytes(base64_encoded) 
     st.image(base64_decoded)
     
     download_json = st.download_button(
