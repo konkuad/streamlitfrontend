@@ -4,6 +4,7 @@ import random
 import requests
 import base64
 import presets
+import copy
 
 st.title("Anime Girl Profile Generator & Customizer")
 generate_form = st.form(key='generate')
@@ -77,7 +78,7 @@ if generate:
             if random_alpha:
                 modulation_json[i]['alpha'] = random.randint(0,201)-100
                 
-        send_json[s] = modulation_json
+        send_json[s] = copy.deepcopy(modulation_json)
         
     post = requests.post(url, json=send_json)
     
