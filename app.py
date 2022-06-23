@@ -4,9 +4,9 @@ import random
 import requests
 import base64
 import presets
-import copy
 
-st.title("Anime Girl Profile Generator & Customizer")
+st.title("This WAIFU doesn't exist")
+st.write("#### But you can control what specs of waifu you want!")
 generate_form = st.form(key='generate')
 generate = generate_form.form_submit_button('Generate!')
 
@@ -36,6 +36,7 @@ with st.sidebar:
     
     st.write('## Set up some parameters')
     
+    include_original = st.checkbox('Include orginal')
     sample_size = st.slider(f'Sample Size', 1, 11, 3)   
     option = st.selectbox('Use presets',['none', 'lavender', 'sunset', 'golden', 'dark'])
     
@@ -65,7 +66,8 @@ with st.sidebar:
         random_alpha = False
         modulation_json = presets.get_presets()[option]
 
-url = 'http://9a8a-35-196-247-66.ngrok.io'
+url = 'http://5197-35-196-247-66.ngrok.io'
+
 if generate:
     
     send_json = {}
@@ -78,14 +80,29 @@ if generate:
             if random_alpha:
                 modulation_json[i]['alpha'] = random.randint(0,201)-100
                 
-        send_json[s] = copy.deepcopy(modulation_json)
+        send_json[s] = modulation_json
         
-    post = requests.post(url, json=send_json)
+    topost = {
+        'include_original':include_original,
+        'data':send_json
+    }
+        
+    post = requests.post(url, json=topost)
+    get_json = json.loads(post.text)
     
-    get = requests.get(url)
-    base64_encoded = str.encode(get.text)
-    base64_decoded = base64.decodebytes(base64_encoded) 
-    st.image(base64_decoded)
+    cols = st.columns(sample_size)
+    for i, col in enumerate(cols):
+       
+        col.write(f'Waifu #{i+1}')
+        base64_encoded = str.encode(get_json[f'new_{i}'])
+        base64_decoded = base64.decodebytes(base64_encoded) 
+        col.image(base64_decoded, use_column_width=True)
+        
+        if include_original:
+            col.write('Original')
+            base64_encoded = str.encode(get_json[f'original_{i}'])
+            base64_decoded = base64.decodebytes(base64_encoded) 
+            col.image(base64_decoded, use_column_width=True)
     
     download_json = st.download_button(
         label="Download Modulations as JSON",
