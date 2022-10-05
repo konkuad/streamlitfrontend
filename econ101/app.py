@@ -115,7 +115,7 @@ if(f==2):
                 "Q":(Q1,Q2),
                 "P":(P1,P2),
             }
-            ED = percentED(PQ)
+            ED = midpointED(PQ)
             st.write(f"### Elasticity is {round(ED,2)}")
             st.write("### "+analyzeCrossED(ED))
     else:
@@ -151,7 +151,7 @@ if(f==3):
                 "Q":(Q1,Q2),
                 "P":(P1,P2),
             }
-            ED = percentED(PQ)
+            ED = midpointED(PQ)
             st.write(f"### Elasticity is {round(ED,2)}")
             st.write("### "+analyzeIncomeED(ED))
     else:
@@ -186,7 +186,7 @@ if(f==4):
                 "Q":(Q1,Q2),
                 "P":(P1,P2),
             }
-            ED = percentED(PQ)
+            ED = abs(midpointED(PQ))
             st.write(f"### Elasticity is {round(ED,2)}")
     else:
         pass
