@@ -200,7 +200,7 @@ if(f==5):
     st.write("3. Related Goods")
     st.write("4. Expectations")
     st.write("5. Number/type of Buyers")
-    st.write("6. Congestion/Neworking Effect")
+    st.write("6. Congestion/Networking Effect")
 
 if(f==6):
     st.write("### Supply Shifters")
