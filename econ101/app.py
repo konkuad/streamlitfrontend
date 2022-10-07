@@ -5,6 +5,8 @@ functions = {
     "Cross Elasticity of Demand":2,
     "Income Elasticity of Demand":3,
     "Price Elasticity of Supply":4,
+    "Demand Shifter":5,
+    "Supply Shifter":6,
 }
 
 posneg = {
@@ -190,6 +192,23 @@ if(f==4):
             st.write(f"### Elasticity is {round(ED,2)}")
     else:
         pass
+
+if(f==5):
+    st.write("### Demand Shifters")
+    st.write("1. Preferences")
+    st.write("2. Income")
+    st.write("3. Related Goods")
+    st.write("4. Expectations")
+    st.write("5. Number/type of Buyers")
+    st.write("6. Congestion/Neworking Effect")
+
+if(f==6):
+    st.write("### Supply Shifters")
+    st.write("1. Related Goods")
+    st.write("2. Price of Inputs")
+    st.write("3. Technology")
+    st.write("4. Expectations")
+    st.write("5. Number of sellers")
 
 else:
     pass
