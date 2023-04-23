@@ -66,7 +66,7 @@ with st.sidebar:
         random_alpha = False
         modulation_json = presets.get_presets()[option]
 
-url = 'http://8cde-34-147-103-120.ngrok.io'
+url = 'http://4981-34-132-140-112.ngrok-free.app'
 
 if generate:
     
